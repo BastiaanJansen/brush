@@ -9,25 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var showTimerView = false
+    @State var defaultTab = 2
     
     var body: some View {
-        NavigationView {
-            NavigationLink(destination: TimerView()) {
-                ZStack {
-                    Circle()
-                        .overlay(
-                            Circle()
-                            .stroke(Color("AccentColor"), lineWidth: 5)
-                        )
-                        .foregroundColor(Color.gray.opacity(0.2))
-                        .frame(width: 120, height: 120, alignment: .center)
+        TabView(selection: $defaultTab) {
+            SettingsView()
+                .tabItem {
+                    Text("Settings")
+                }.tag(1)
+            StartView()
+                .tabItem() {
                     Text("Start")
-                }
-            }
-            .buttonStyle(PlainButtonStyle())
-            .navigationBarTitle("Brush")
+                }.tag(2)
+            HistoryView()
+                .tabItem {
+                    Text("History")
+                }.tag(3)
         }
+        .font(.headline)
     }
 }
 

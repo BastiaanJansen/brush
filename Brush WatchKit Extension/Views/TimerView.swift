@@ -13,7 +13,9 @@ struct TimerView: View {
     @State var seconds: Float = 0.0
     @State var progress: Float = 0.0
     
-    let goalTime: Float = 60
+    var goalTime: Float {
+        UserDefaults.standard.float(forKey: "goalTime")
+    }
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {

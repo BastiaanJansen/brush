@@ -13,6 +13,10 @@ struct BrushApp: App {
     
     init() {
         askHealthkitPermission()
+        
+        UserDefaults.standard.register(defaults: [
+            "goalTime": 120
+        ])
     }
     
     @SceneBuilder var body: some Scene {
@@ -38,6 +42,8 @@ struct BrushApp: App {
                     fatalError("Something went wrong")
                 }
             }
+        } else {
+            fatalError("Healthkit is not available")
         }
     }
 }

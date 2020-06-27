@@ -25,12 +25,22 @@ struct HistoryView: View {
 struct ItemView: View {
     let sample: HKCategorySample
     
+    var seconds: Int {
+        (sample.endDate - sample.startDate).second!
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Image(systemName: "checkmark.circle.fill")
-                    .foregroundColor(.green)
-                    .font(.title2)
+                if seconds >= UserDefaults.standard.integer(forKey: "goalTime") {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundColor(.green)
+                        .font(.title2)
+                } else {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.red)
+                        .font(.title2)
+                }
                 
                 Spacer()
                 
@@ -39,7 +49,7 @@ struct ItemView: View {
             }
             
             VStack(alignment: .leading) {
-                Text("\((sample.endDate - sample.startDate).second!)")
+                Text("\(seconds)")
                     .font(.title)
                     .bold()
                 Text("Seconds")

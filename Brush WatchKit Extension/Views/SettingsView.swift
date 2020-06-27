@@ -9,15 +9,20 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @State var goalTime: Int = 120
+    @ObservedObject var settingsVM = SettingsViewModel()
+    
     let minimumGoalTime = 10
     let maximumGoalTime = 600
     
     var body: some View {
         Form {
             Section {
-                Picker("Goal brush time", selection: $goalTime) {
-                    ForEach(minimumGoalTime..<maximumGoalTime) {
+//                Toggle(isOn: $hapticsEvery30Seconds) {
+//                    Text("Haptics every 30 seconds")
+//                }
+                
+                Picker("Goal brush time", selection: $settingsVM.goalTime) {
+                    ForEach(0..<maximumGoalTime) {
                         Text("\($0)")
                     }
                 }.pickerStyle(WheelPickerStyle())
