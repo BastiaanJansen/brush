@@ -11,19 +11,41 @@ import HealthKit
 struct HistoryView: View {
     
     @ObservedObject var historyVM = HistoryViewModel()
+    let goalTime = UserDefaults.standard.integer(forKey: "goalTime")
     
     var body: some View {
-        List(historyVM.data, id: \.self) { sample in
-            NavigationLink(destination: SampleView(sample: sample)) {
-                ItemView(sample: sample)
+        ScrollView {
+            VStack(spacing: 10) {
+                Text("Average session".uppercased())
+                    .font(.system(size: 13))
+                    .bold()
+                Text("\(historyVM.averageSeconds)")
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundColor(historyVM.averageSeconds >= goalTime ? .green : .red)
+                Text("Seconds")
+                    .font(.system(size: 12))
+                    .foregroundColor(.gray)
+            }
+            
+            Spacer(minLength: 20)
+            Divider()
+            Spacer(minLength: 20)
+            
+            LazyVStack(spacing: 10) {
+                ForEach(historyVM.data, id: \.self) { sample in
+                    NavigationLink(destination: SampleView(sample: sample)) {
+                        ItemView(sample: sample)
+                    }
+                }
             }
         }
-        .listStyle(CarouselListStyle())
     }
 }
 
 struct ItemView: View {
     let sample: HKCategorySample
+    let goalTime = UserDefaults.standard.integer(forKey: "goalTime")
     
     var seconds: Int {
         (sample.endDate - sample.startDate).second!
@@ -32,7 +54,7 @@ struct ItemView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                if seconds >= UserDefaults.standard.integer(forKey: "goalTime") {
+                if seconds >= goalTime {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundColor(.green)
                         .font(.title2)

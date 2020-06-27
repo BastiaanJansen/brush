@@ -11,6 +11,12 @@ import HealthKit
 class HistoryViewModel: ObservableObject {
     @Published var data: [HKCategorySample] = []
     
+    var averageSeconds: Int {
+        let seconds: [Int] = data.map { ($0.endDate - $0.startDate).second! }
+        let total = seconds.reduce(0, +)
+        return total / seconds.count
+    }
+    
     init() {
         updateData()
     }

@@ -10,11 +10,12 @@ import HealthKit
 
 struct TimerView: View {
     
-    @State var seconds: Float = 0.0
+    @State var seconds: Int = 0
     @State var progress: Float = 0.0
+    @State var showResultView: Bool = false
     
-    var goalTime: Float {
-        UserDefaults.standard.float(forKey: "goalTime")
+    var goalTime: Int {
+        UserDefaults.standard.integer(forKey: "goalTime")
     }
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -24,12 +25,12 @@ struct TimerView: View {
                 .frame(width: 140, height: 140)
                 .padding(20)
             
-            Text(String(format: "%.0f", seconds))
+            Text(String(seconds))
                 .font(.title)
                 .bold()
                 .onReceive(timer) { _ in
                     seconds += 1
-                    progress = seconds / goalTime
+                    progress = Float(seconds) / Float(goalTime)
                     
                     if (seconds == goalTime) {
                         WKInterfaceDevice.current().play(WKHapticType.success)
@@ -39,9 +40,14 @@ struct TimerView: View {
             timer.upstream.connect().cancel()
             let end = Date()
             var start = end
-            start.changeSeconds(by: -Int(round(seconds)))
-            saveData(value: Int(round(seconds)), start: start, end: end)
+            start.changeSeconds(by: -seconds)
+            saveData(value: seconds, start: start, end: end)
+            showResultView.toggle()
+        }.sheet(isPresented: $showResultView) {
+            ResultView(seconds: seconds)
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
     
     func saveData(value: Int, start: Date, end: Date) {

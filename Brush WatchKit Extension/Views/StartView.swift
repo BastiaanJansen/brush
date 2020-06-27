@@ -19,6 +19,8 @@ struct StartView: View {
                     .foregroundColor(Color.gray.opacity(0.2))
                     .frame(width: 120, height: 120, alignment: .center)
                 Text("Start")
+                    .font(.title2)
+                    .bold()
             }
         }
         .buttonStyle(PlainButtonStyle())

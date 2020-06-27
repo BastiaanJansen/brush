@@ -27,6 +27,8 @@ struct ContentView: View {
                 }.tag(3)
         }
         .font(.headline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
