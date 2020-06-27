@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
+import HealthKit
 
 struct TimerView: View {
     
     @State var seconds: Float = 0.0
-    let goalTime: Float = 120.0
-    
     @State var progress: Float = 0.0
     
+    let goalTime: Float = 60
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -28,7 +28,33 @@ struct TimerView: View {
                 .onReceive(timer) { _ in
                     seconds += 1
                     progress = seconds / goalTime
+                    
+                    if (seconds == goalTime) {
+                        WKInterfaceDevice.current().play(WKHapticType.success)
+                    }
                 }
+        }.onTapGesture {
+            timer.upstream.connect().cancel()
+            let end = Date()
+            var start = end
+            start.changeSeconds(by: -Int(round(seconds)))
+            saveData(value: Int(round(seconds)), start: start, end: end)
+        }
+    }
+    
+    func saveData(value: Int, start: Date, end: Date) {
+        if HKHealthStore.isHealthDataAvailable() {
+            let healthStore = HKHealthStore()
+            let type = HKObjectType.categoryType(forIdentifier: .toothbrushingEvent)
+            let toothbrushEvent = HKCategorySample(type: type!, value: HKCategoryValue.notApplicable.rawValue, start: start, end: end)
+            
+            healthStore.save(toothbrushEvent) { success, error in
+                if error != nil {
+                    fatalError(error?.localizedDescription ?? "Something went wrong")
+                }
+            }
+        } else {
+            fatalError("Healthkit is not available")
         }
     }
 }
