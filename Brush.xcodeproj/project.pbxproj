@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28C28F7A24A73DEC00101288 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C28F7924A73DEC00101288 /* TimerView.swift */; };
+		28E659E324A74017009BC66F /* BrushTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E659E224A74017009BC66F /* BrushTimer.swift */; };
 		28FE7CA224A73824001D54A2 /* Brush WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 28FE7CA124A73824001D54A2 /* Brush WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		28FE7CA724A73825001D54A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28FE7CA624A73825001D54A2 /* Assets.xcassets */; };
 		28FE7CAE24A73825001D54A2 /* Brush WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 28FE7CAD24A73825001D54A2 /* Brush WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -62,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		28C28F7924A73DEC00101288 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		28E659E224A74017009BC66F /* BrushTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushTimer.swift; sourceTree = "<group>"; };
 		28FE7C9D24A73824001D54A2 /* Brush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FE7CA124A73824001D54A2 /* Brush WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brush WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FE7CA624A73825001D54A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +93,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28C28F7824A73DDD00101288 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				28FE7CB424A73825001D54A2 /* ContentView.swift */,
+				28C28F7924A73DEC00101288 /* TimerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		28E659E124A7400D009BC66F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				28E659E224A74017009BC66F /* BrushTimer.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		28FE7C9624A73824001D54A2 = {
 			isa = PBXGroup;
 			children = (
@@ -120,8 +141,9 @@
 		28FE7CB124A73825001D54A2 /* Brush WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				28E659E124A7400D009BC66F /* Models */,
+				28C28F7824A73DDD00101288 /* Views */,
 				28FE7CB224A73825001D54A2 /* BrushApp.swift */,
-				28FE7CB424A73825001D54A2 /* ContentView.swift */,
 				28FE7CB624A73825001D54A2 /* NotificationController.swift */,
 				28FE7CB824A73825001D54A2 /* NotificationView.swift */,
 				28FE7CBA24A73825001D54A2 /* ComplicationController.swift */,
@@ -267,7 +289,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C28F7A24A73DEC00101288 /* TimerView.swift in Sources */,
 				28FE7CB724A73825001D54A2 /* NotificationController.swift in Sources */,
+				28E659E324A74017009BC66F /* BrushTimer.swift in Sources */,
 				28FE7CB524A73825001D54A2 /* ContentView.swift in Sources */,
 				28FE7CBB24A73825001D54A2 /* ComplicationController.swift in Sources */,
 				28FE7CB324A73825001D54A2 /* BrushApp.swift in Sources */,
