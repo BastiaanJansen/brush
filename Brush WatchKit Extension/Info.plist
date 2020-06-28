@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Update health data</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Read health data</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -36,6 +32,18 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
 	</dict>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Read health data</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Update health data</string>
+	<key>UIBackgroundModes</key>
+	<array/>
+	<key>WKBackgroundModes</key>
+	<array>
+		<string>self-care</string>
+	</array>
+	<key>WKExtendedRuntimeSessionDescription</key>
+	<string></string>
 	<key>WKWatchOnly</key>
 	<true/>
 </dict>

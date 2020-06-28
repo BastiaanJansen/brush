@@ -14,7 +14,12 @@ class HistoryViewModel: ObservableObject {
     var averageSeconds: Int {
         let seconds: [Int] = data.map { ($0.endDate - $0.startDate).second! }
         let total = seconds.reduce(0, +)
-        return total / seconds.count
+        
+        if total > 0 {
+            return total / seconds.count
+        }
+        
+        return 0
     }
     
     init() {
@@ -32,7 +37,8 @@ class HistoryViewModel: ObservableObject {
             
             let observerQuery = HKObserverQuery(sampleType: sampleType, predicate: nil) { query, completionHandler, error in
                 if let error = error {
-                    fatalError(error.localizedDescription)
+                    print(error.localizedDescription)
+                    return
                 }
                 
                 let query = HKSampleQuery(sampleType: sampleType, predicate: nil, limit: Int(HKObjectQueryNoLimit), sortDescriptors: [

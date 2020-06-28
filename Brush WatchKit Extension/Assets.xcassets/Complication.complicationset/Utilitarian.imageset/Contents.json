@@ -1,21 +1,25 @@
 {
   "images" : [
     {
+      "filename" : "Webp.net-resizeimage (8).png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : "<=145"
     },
     {
+      "filename" : "Webp.net-resizeimage (9).png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">161"
     },
     {
+      "filename" : "Webp.net-resizeimage (9)-1.png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">145"
     },
     {
+      "filename" : "Webp.net-resizeimage (10).png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">183"

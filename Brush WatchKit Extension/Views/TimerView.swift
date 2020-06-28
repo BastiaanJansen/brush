@@ -10,77 +10,45 @@ import HealthKit
 
 struct TimerView: View {
     
-    @State var seconds: Int = 0
-    @State var progress: Float = 0.0
-    @State var showResultView: Bool = false
-    
-    var goalTime: Int {
-        UserDefaults.standard.integer(forKey: "goalTime")
-    }
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @ObservedObject var timerVM = TimerViewModel()
     
     var body: some View {
         ZStack {
-            ProgressBar(progress: $progress)
+            ProgressBar(progress: $timerVM.progress, color: timerVM.color)
                 .frame(width: 140, height: 140)
                 .padding(20)
             
-            Text(String(seconds))
+            Text(String(timerVM.seconds))
                 .font(.title)
                 .bold()
-                .onReceive(timer) { _ in
-                    seconds += 1
-                    progress = Float(seconds) / Float(goalTime)
-                    
-                    if (seconds == goalTime) {
-                        WKInterfaceDevice.current().play(WKHapticType.success)
-                    }
-                }
         }.onTapGesture {
-            timer.upstream.connect().cancel()
-            let end = Date()
-            var start = end
-            start.changeSeconds(by: -seconds)
-            saveData(value: seconds, start: start, end: end)
-            showResultView.toggle()
-        }.sheet(isPresented: $showResultView) {
-            ResultView(seconds: seconds)
+            timerVM.stopSession()
+        }.sheet(isPresented: $timerVM.showResultView) {
+            ResultView(seconds: timerVM.seconds)
+        }
+        .onAppear {
+            timerVM.startSession()
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
-    }
-    
-    func saveData(value: Int, start: Date, end: Date) {
-        if HKHealthStore.isHealthDataAvailable() {
-            let healthStore = HKHealthStore()
-            let type = HKObjectType.categoryType(forIdentifier: .toothbrushingEvent)
-            let toothbrushEvent = HKCategorySample(type: type!, value: HKCategoryValue.notApplicable.rawValue, start: start, end: end)
-            
-            healthStore.save(toothbrushEvent) { success, error in
-                if error != nil {
-                    fatalError(error?.localizedDescription ?? "Something went wrong")
-                }
-            }
-        } else {
-            fatalError("Healthkit is not available")
-        }
     }
 }
 
 struct ProgressBar: View {
     @Binding var progress: Float
+    @Binding var color: Color
     
     var body: some View {
         ZStack {
             Circle()
-                .stroke(lineWidth: 15.0)
+                .stroke(lineWidth: 13.0)
+                .foregroundColor(color)
                 .opacity(0.3)
-                .foregroundColor(Color("AccentColor"))
             
             Circle()
                 .trim(from: 0.0, to: CGFloat(min(max(progress, 0.005), 1.0)))
-                .stroke(style: StrokeStyle(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
-                .foregroundColor(Color("AccentColor"))
+                .stroke(style: StrokeStyle(lineWidth: 17, lineCap: .round, lineJoin: .round))
+                .foregroundColor(color)
                 .rotationEffect(Angle(degrees: 270.0))
                 .animation(.linear)
         }

@@ -14,29 +14,37 @@ struct ResultView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                if seconds >= goalTime {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.green)
-                        .font(.title)
-                } else {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.red)
-                        .font(.title)
-                }
-                
-                VStack {
-                    Text("\(seconds)")
-                        .font(.title)
-                        .bold()
-                    Text("Seconds")
-                        .font(.footnote)
-                }
-                
-                NavigationLink(destination: ContentView()) {
-                    Text("Go back")
-                }
+            ScrollView {
+                VStack(spacing: 20) {
+                    HStack {
+                        Image(systemName: seconds >= goalTime ? "checkmark.circle.fill" : "xmark.circle.fill")
+                            .foregroundColor(seconds >= goalTime ? .green : .red)
+                            .font(.system(size: 50))
+                        
+                        Spacer()
+                        
+                        VStack {
+                            Text("\(seconds)")
+                                .font(.title)
+                                .bold()
+                            Text("Seconds")
+                                .font(.footnote)
+                        }
+                    }
+                    
+                    Divider()
+                    
+                    VStack {
+                        Text("Your goal is \(goalTime) seconds")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    NavigationLink(destination: ContentView()) {
+                        Text("Done")
+                    }
 
+                }
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
@@ -46,6 +54,6 @@ struct ResultView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(seconds: 42)
+        ResultView(seconds: 134)
     }
 }
