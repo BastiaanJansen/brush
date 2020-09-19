@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		282D09D024A76DED00056B39 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D09CF24A76DED00056B39 /* StartView.swift */; };
 		282D09D224A76E9B00056B39 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D09D124A76E9B00056B39 /* HistoryView.swift */; };
-		283FBC2524A8878100FCD6D6 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283FBC2424A8878100FCD6D6 /* TimerViewModel.swift */; };
 		283FBC2724A8917900FCD6D6 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283FBC2624A8917900FCD6D6 /* CountdownView.swift */; };
 		28C28F7A24A73DEC00101288 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C28F7924A73DEC00101288 /* TimerView.swift */; };
 		28C40AAE24A775A6003623DE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C40AAD24A775A6003623DE /* HealthKit.framework */; };
@@ -19,6 +18,7 @@
 		28C40AB824A798D2003623DE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C40AB724A798D2003623DE /* SettingsView.swift */; };
 		28C40ABA24A7A36D003623DE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C40AB924A7A36D003623DE /* SettingsViewModel.swift */; };
 		28C40ABC24A7ACE2003623DE /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C40ABB24A7ACE2003623DE /* ResultView.swift */; };
+		28F7F1FC25161CF900676AEC /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7F1FB25161CF900676AEC /* TimerViewModel.swift */; };
 		28FE7CA224A73824001D54A2 /* Brush WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 28FE7CA124A73824001D54A2 /* Brush WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		28FE7CA724A73825001D54A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28FE7CA624A73825001D54A2 /* Assets.xcassets */; };
 		28FE7CAE24A73825001D54A2 /* Brush WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 28FE7CAD24A73825001D54A2 /* Brush WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -76,7 +76,6 @@
 /* Begin PBXFileReference section */
 		282D09CF24A76DED00056B39 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		282D09D124A76E9B00056B39 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		283FBC2424A8878100FCD6D6 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		283FBC2624A8917900FCD6D6 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		28C28F7924A73DEC00101288 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		28C40AAA24A773BB003623DE /* Brush WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Brush WatchKit App.entitlements"; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		28C40AB724A798D2003623DE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		28C40AB924A7A36D003623DE /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		28C40ABB24A7ACE2003623DE /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		28F7F1FB25161CF900676AEC /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		28FE7C9D24A73824001D54A2 /* Brush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FE7CA124A73824001D54A2 /* Brush WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brush WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FE7CA624A73825001D54A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 			children = (
 				28C40AB024A78A45003623DE /* HistoryViewModel.swift */,
 				28C40AB924A7A36D003623DE /* SettingsViewModel.swift */,
-				283FBC2424A8878100FCD6D6 /* TimerViewModel.swift */,
+				28F7F1FB25161CF900676AEC /* TimerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -155,13 +155,6 @@
 				28C40AB324A791AC003623DE /* Date.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		28E659E124A7400D009BC66F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		28FE7C9624A73824001D54A2 = {
@@ -200,7 +193,6 @@
 				28C40AB224A791A4003623DE /* Extensions */,
 				28C40AAF24A78A33003623DE /* ViewModels */,
 				28C40AAB24A775A6003623DE /* Brush WatchKit Extension.entitlements */,
-				28E659E124A7400D009BC66F /* Models */,
 				28C28F7824A73DDD00101288 /* Views */,
 				28FE7CB224A73825001D54A2 /* BrushApp.swift */,
 				28FE7CB624A73825001D54A2 /* NotificationController.swift */,
@@ -359,8 +351,8 @@
 				28FE7CB524A73825001D54A2 /* ContentView.swift in Sources */,
 				28C40ABA24A7A36D003623DE /* SettingsViewModel.swift in Sources */,
 				283FBC2724A8917900FCD6D6 /* CountdownView.swift in Sources */,
-				283FBC2524A8878100FCD6D6 /* TimerViewModel.swift in Sources */,
 				28FE7CBB24A73825001D54A2 /* ComplicationController.swift in Sources */,
+				28F7F1FC25161CF900676AEC /* TimerViewModel.swift in Sources */,
 				28C40AB824A798D2003623DE /* SettingsView.swift in Sources */,
 				28FE7CB324A73825001D54A2 /* BrushApp.swift in Sources */,
 				28FE7CB924A73825001D54A2 /* NotificationView.swift in Sources */,

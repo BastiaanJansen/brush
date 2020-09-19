@@ -14,7 +14,7 @@ struct TimerView: View {
     
     var body: some View {
         ZStack {
-            ProgressBar(progress: $timerVM.progress, color: timerVM.color)
+            ProgressBar(progress: $timerVM.progress, color: $timerVM.color)
                 .frame(width: 140, height: 140)
                 .padding(20)
             
