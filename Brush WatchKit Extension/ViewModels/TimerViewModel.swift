@@ -8,17 +8,19 @@
 import SwiftUI
 import HealthKit
 
-class TimerViewModel: ObservableObject {
+class TimerViewModel: NSObject, ObservableObject, WKExtendedRuntimeSessionDelegate {
     @Published var showResultView: Bool = false
     @Published var progress: Float = 0.0
     @Published var color: Color = .blue
     @Published var seconds: Int = 0
     
-    var timer: Timer?
+    var timer: Timer = Timer()
     
     var goalTime: Int {
         UserDefaults.standard.integer(forKey: "goalTime")
     }
+    
+    var session = WKExtendedRuntimeSession()
 
     @objc func fireTimer() {
         seconds += 1
@@ -30,11 +32,14 @@ class TimerViewModel: ObservableObject {
     }
     
     func startSession() {
+        session.delegate = self
+        session.start()
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
     }
     
     func stopSession() {
-        timer?.invalidate()
+        timer.invalidate()
+        session.invalidate()
         showResultView.toggle()
         
         let end = Date()
@@ -55,7 +60,18 @@ class TimerViewModel: ObservableObject {
                 }
             }
         } else {
-            fatalError("Healthkit is not available")
+            print("Healthkit is not available")
         }
     }
+    
+    // MARK:- Extended Runtime Session Delegate Methods
+    func extendedRuntimeSessionDidStart(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
+        print("Session started at", Date())
+    }
+        
+    func extendedRuntimeSession(_ extendedRuntimeSession: WKExtendedRuntimeSession, didInvalidateWith reason: WKExtendedRuntimeSessionInvalidationReason, error: Error?) {
+        print("Session stopped at", Date())
+    }
+    
+    func extendedRuntimeSessionWillExpire(_ extendedRuntimeSession: WKExtendedRuntimeSession) {}
 }

@@ -16,11 +16,7 @@ struct SettingsView: View {
     
     var body: some View {
         Form {
-            Section {
-//                Toggle(isOn: $hapticsEvery30Seconds) {
-//                    Text("Haptics every 30 seconds")
-//                }
-                
+            Section {                
                 Picker("Goal brush time", selection: $settingsVM.goalTime) {
                     ForEach(0..<maximumGoalTime) {
                         Text("\($0)")

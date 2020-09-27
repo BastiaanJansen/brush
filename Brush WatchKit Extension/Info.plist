@@ -33,9 +33,9 @@
 		<string>com.apple.watchkit</string>
 	</dict>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Read health data</string>
+	<string>Read toothbrush sessions from Homekit</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Update health data</string>
+	<string>Save toothbrush sessions to Homekit</string>
 	<key>UIBackgroundModes</key>
 	<array/>
 	<key>WKBackgroundModes</key>

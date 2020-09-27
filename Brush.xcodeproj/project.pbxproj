@@ -10,8 +10,8 @@
 		282D09D024A76DED00056B39 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D09CF24A76DED00056B39 /* StartView.swift */; };
 		282D09D224A76E9B00056B39 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D09D124A76E9B00056B39 /* HistoryView.swift */; };
 		283FBC2724A8917900FCD6D6 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283FBC2624A8917900FCD6D6 /* CountdownView.swift */; };
+		2891DFD42518F404004CEF8E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C40AAD24A775A6003623DE /* HealthKit.framework */; };
 		28C28F7A24A73DEC00101288 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C28F7924A73DEC00101288 /* TimerView.swift */; };
-		28C40AAE24A775A6003623DE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C40AAD24A775A6003623DE /* HealthKit.framework */; };
 		28C40AB124A78A45003623DE /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C40AB024A78A45003623DE /* HistoryViewModel.swift */; };
 		28C40AB424A791AC003623DE /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C40AB324A791AC003623DE /* Date.swift */; };
 		28C40AB624A79689003623DE /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C40AB524A79689003623DE /* SampleView.swift */; };
@@ -74,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		281CB59625207AD300132A46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		282D09CF24A76DED00056B39 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		282D09D124A76E9B00056B39 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		283FBC2624A8917900FCD6D6 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
@@ -109,7 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28C40AAE24A775A6003623DE /* HealthKit.framework in Frameworks */,
+				2891DFD42518F404004CEF8E /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +161,7 @@
 		28FE7C9624A73824001D54A2 = {
 			isa = PBXGroup;
 			children = (
+				281CB59625207AD300132A46 /* Info.plist */,
 				28FE7CA524A73824001D54A2 /* Brush WatchKit App */,
 				28FE7CB124A73825001D54A2 /* Brush WatchKit Extension */,
 				28FE7C9E24A73824001D54A2 /* Products */,
@@ -589,8 +591,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 94N28U4FG3;
+				INFOPLIST_FILE = Info.plist;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bastiaanjansen.iExpense;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bastiaanjansen.Brush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -605,8 +608,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 94N28U4FG3;
+				INFOPLIST_FILE = Info.plist;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bastiaanjansen.iExpense;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bastiaanjansen.Brush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

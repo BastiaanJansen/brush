@@ -59,7 +59,7 @@ class HistoryViewModel: ObservableObject {
             
             healthStore.execute(observerQuery)
         } else {
-            fatalError("Healthkit not available")
+            print("Healthkit not available")
         }
     }
 }
