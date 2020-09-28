@@ -62,4 +62,17 @@ class HistoryViewModel: ObservableObject {
             print("Healthkit not available")
         }
     }
+    
+    func deleteSample(sample: HKCategorySample) {
+        if HKHealthStore.isHealthDataAvailable() {
+            let healthStore = HKHealthStore()
+            healthStore.delete(sample) { success, error in
+                if let error = error {
+                    fatalError(error.localizedDescription)
+                }
+            }
+        } else {
+            fatalError("Healthkit not available")
+        }
+    }
 }

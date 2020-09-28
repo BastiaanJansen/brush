@@ -23,6 +23,7 @@ struct SampleView: View {
     }
     
     func deleteSample() {
+        print("sample: " + String(sample.value))
         if HKHealthStore.isHealthDataAvailable() {
             let healthStore = HKHealthStore()
             healthStore.delete(sample) { success, error in

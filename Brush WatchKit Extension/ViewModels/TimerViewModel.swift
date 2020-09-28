@@ -9,10 +9,10 @@ import SwiftUI
 import HealthKit
 
 class TimerViewModel: NSObject, ObservableObject, WKExtendedRuntimeSessionDelegate {
-    @Published var showResultView: Bool = false
-    @Published var progress: Float = 0.0
-    @Published var color: Color = .accentColor
-    @Published var seconds: Int = 0
+    @Published var showResultView: Bool
+    @Published var progress: Float
+    @Published var color: Color
+    @Published var seconds: Int
     
     var timer: Timer = Timer()
     
@@ -21,12 +21,19 @@ class TimerViewModel: NSObject, ObservableObject, WKExtendedRuntimeSessionDelega
     }
     
     var session = WKExtendedRuntimeSession()
+    
+    init(seconds: Int) {
+        self.showResultView = false
+        self.seconds = seconds
+        self.progress = Float(seconds) / Float(UserDefaults.standard.integer(forKey: "goalTime"))
+        self.color = .accentColor
+    }
 
     @objc func fireTimer() {
         seconds += 1
         progress = Float(seconds) / Float(goalTime)
         
-        if progress > 1 {
+        if progress == 1 {
             color = .green
             
             WKInterfaceDevice.current().play(.success)
@@ -43,27 +50,6 @@ class TimerViewModel: NSObject, ObservableObject, WKExtendedRuntimeSessionDelega
         timer.invalidate()
         session.invalidate()
         showResultView.toggle()
-        
-        let end = Date()
-        var start = end
-        start.changeSeconds(by: -seconds)
-        saveData(value: seconds, start: start, end: end)
-    }
-    
-    func saveData(value: Int, start: Date, end: Date) {
-        if HKHealthStore.isHealthDataAvailable() {
-            let healthStore = HKHealthStore()
-            let type = HKObjectType.categoryType(forIdentifier: .toothbrushingEvent)
-            let toothbrushEvent = HKCategorySample(type: type!, value: HKCategoryValue.notApplicable.rawValue, start: start, end: end)
-
-            healthStore.save(toothbrushEvent) { success, error in
-                if error != nil {
-                    fatalError(error?.localizedDescription ?? "Something went wrong")
-                }
-            }
-        } else {
-            print("Healthkit is not available")
-        }
     }
     
     // MARK:- Extended Runtime Session Delegate Methods

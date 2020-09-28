@@ -10,7 +10,11 @@ import HealthKit
 
 struct TimerView: View {
     
-    @ObservedObject var timerVM = TimerViewModel()
+    @ObservedObject var timerVM: TimerViewModel
+    
+    init(seconds: Int = 0) {
+        timerVM = TimerViewModel(seconds: seconds)
+    }
     
     var body: some View {
         ZStack {
@@ -19,7 +23,7 @@ struct TimerView: View {
                 .padding(20)
             
             Text(String(timerVM.seconds))
-                .font(.title)
+                .font(.largeTitle)
                 .bold()
         }.onTapGesture {
             timerVM.stopSession()

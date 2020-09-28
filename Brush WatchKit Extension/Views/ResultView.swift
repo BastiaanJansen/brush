@@ -9,22 +9,25 @@ import SwiftUI
 
 struct ResultView: View {
     
-    let seconds: Int
-    let goalTime = UserDefaults.standard.integer(forKey: "goalTime")
+    @ObservedObject var resultVM: ResultViewModel
+    
+    init(seconds: Int) {
+        resultVM = ResultViewModel(seconds: seconds)
+    }
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
                     HStack {
-                        Image(systemName: seconds >= goalTime ? "checkmark.circle.fill" : "xmark.circle.fill")
-                            .foregroundColor(seconds >= goalTime ? .green : .red)
+                        Image(systemName: resultVM.seconds >= resultVM.goalTime ? "checkmark.circle.fill" : "xmark.circle.fill")
+                            .foregroundColor(resultVM.seconds >= resultVM.goalTime ? .green : .red)
                             .font(.system(size: 50))
                         
                         Spacer()
                         
                         VStack(alignment: .trailing) {
-                            Text("\(seconds)")
+                            Text("\(resultVM.seconds)")
                                 .font(.title)
                                 .bold()
                                 .foregroundColor(.accentColor)
@@ -37,13 +40,21 @@ struct ResultView: View {
                     Divider()
                     
                     VStack {
-                        Text("Your goal is \(goalTime) seconds")
+                        Text("Your goal is \(resultVM.goalTime) seconds")
                             .font(.footnote)
                             .foregroundColor(.secondary)
                     }
                     
-                    NavigationLink(destination: ContentView()) {
-                        Text("Done")
+                    HStack {
+                        NavigationLink(destination: TimerView(seconds: resultVM.seconds)) {
+                            Text("Back")
+                        }
+                        
+                        NavigationLink(destination: ContentView().onAppear() {
+                            resultVM.saveSession()
+                        }) {
+                            Text("Save")
+                        }
                     }
 
                 }
