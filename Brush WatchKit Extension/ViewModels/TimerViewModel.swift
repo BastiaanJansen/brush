@@ -11,7 +11,7 @@ import HealthKit
 class TimerViewModel: NSObject, ObservableObject, WKExtendedRuntimeSessionDelegate {
     @Published var showResultView: Bool = false
     @Published var progress: Float = 0.0
-    @Published var color: Color = .blue
+    @Published var color: Color = .accentColor
     @Published var seconds: Int = 0
     
     var timer: Timer = Timer()
@@ -26,8 +26,10 @@ class TimerViewModel: NSObject, ObservableObject, WKExtendedRuntimeSessionDelega
         seconds += 1
         progress = Float(seconds) / Float(goalTime)
         
-        if progress >= 1 {
+        if progress > 1 {
             color = .green
+            
+            WKInterfaceDevice.current().play(.success)
         }
     }
     

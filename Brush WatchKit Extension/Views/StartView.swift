@@ -14,11 +14,11 @@ struct StartView: View {
                 Circle()
                     .overlay(
                         Circle()
-                        .stroke(Color("AccentColor"), lineWidth: 5)
+                            .stroke(Color.accentColor, lineWidth: 5)
                     )
                     .foregroundColor(Color.gray.opacity(0.2))
                     .frame(width: 120, height: 120, alignment: .center)
-                Text("Start")
+                Text("Start").foregroundColor(.accentColor)
                     .font(.title2)
                     .bold()
             }

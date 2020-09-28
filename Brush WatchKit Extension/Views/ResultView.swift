@@ -23,12 +23,14 @@ struct ResultView: View {
                         
                         Spacer()
                         
-                        VStack {
+                        VStack(alignment: .trailing) {
                             Text("\(seconds)")
                                 .font(.title)
                                 .bold()
+                                .foregroundColor(.accentColor)
                             Text("Seconds")
                                 .font(.footnote)
+                                .foregroundColor(.gray)
                         }
                     }
                     
