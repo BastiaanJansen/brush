@@ -25,6 +25,7 @@ struct TimerView: View {
             Text(String(timerVM.seconds))
                 .font(.largeTitle)
                 .bold()
+                .foregroundColor(.accentColor)
         }.onTapGesture {
             timerVM.stopSession()
         }.sheet(isPresented: $timerVM.showResultView) {

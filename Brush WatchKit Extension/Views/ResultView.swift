@@ -30,7 +30,6 @@ struct ResultView: View {
                             Text("\(resultVM.seconds)")
                                 .font(.title)
                                 .bold()
-                                .foregroundColor(.accentColor)
                             Text("Seconds")
                                 .font(.footnote)
                                 .foregroundColor(.gray)
@@ -48,13 +47,13 @@ struct ResultView: View {
                     HStack {
                         NavigationLink(destination: TimerView(seconds: resultVM.seconds)) {
                             Text("Back")
-                        }
+                        }.cornerRadius(10)
                         
                         NavigationLink(destination: ContentView().onAppear() {
                             resultVM.saveSession()
                         }) {
                             Text("Save")
-                        }
+                        }.background(resultVM.seconds >= resultVM.goalTime ? Color.green : Color.red).cornerRadius(10)
                     }
 
                 }
@@ -67,6 +66,6 @@ struct ResultView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(seconds: 134)
+        ResultView(seconds: 153)
     }
 }

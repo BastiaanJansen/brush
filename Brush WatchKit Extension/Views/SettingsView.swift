@@ -48,7 +48,6 @@ struct SettingsView: View {
                                     .foregroundColor(Color("DarkGray"))).cornerRadius(10)
                 }.buttonStyle(PlainButtonStyle())
             }
-            
         }
     }
 }
