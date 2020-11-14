@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281A0DC925235A8400C5B685 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281A0DC825235A8400C5B685 /* ProgressBar.swift */; };
+		281A0DD1252363E200C5B685 /* CountdownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281A0DD0252363E200C5B685 /* CountdownViewModel.swift */; };
+		281A0DD6252369AE00C5B685 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281A0DD5252369AE00C5B685 /* StartViewModel.swift */; };
 		282D09D024A76DED00056B39 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D09CF24A76DED00056B39 /* StartView.swift */; };
 		282D09D224A76E9B00056B39 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D09D124A76E9B00056B39 /* HistoryView.swift */; };
 		283FBC2724A8917900FCD6D6 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283FBC2624A8917900FCD6D6 /* CountdownView.swift */; };
@@ -15,7 +18,6 @@
 		28C28F7A24A73DEC00101288 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C28F7924A73DEC00101288 /* TimerView.swift */; };
 		28C40AB124A78A45003623DE /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C40AB024A78A45003623DE /* HistoryViewModel.swift */; };
 		28C40AB424A791AC003623DE /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C40AB324A791AC003623DE /* Date.swift */; };
-		28C40AB624A79689003623DE /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C40AB524A79689003623DE /* SampleView.swift */; };
 		28C40AB824A798D2003623DE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C40AB724A798D2003623DE /* SettingsView.swift */; };
 		28C40ABA24A7A36D003623DE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C40AB924A7A36D003623DE /* SettingsViewModel.swift */; };
 		28C40ABC24A7ACE2003623DE /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C40ABB24A7ACE2003623DE /* ResultView.swift */; };
@@ -50,6 +52,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		28069F5325233862006ADC18 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28FE7CC824A73826001D54A2 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -75,6 +87,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		281A0DC825235A8400C5B685 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		281A0DD0252363E200C5B685 /* CountdownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewModel.swift; sourceTree = "<group>"; };
+		281A0DD5252369AE00C5B685 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		281CB59625207AD300132A46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		282D09CF24A76DED00056B39 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		282D09D124A76E9B00056B39 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -86,7 +101,6 @@
 		28C40AAD24A775A6003623DE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		28C40AB024A78A45003623DE /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		28C40AB324A791AC003623DE /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		28C40AB524A79689003623DE /* SampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleView.swift; sourceTree = "<group>"; };
 		28C40AB724A798D2003623DE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		28C40AB924A7A36D003623DE /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		28C40ABB24A7ACE2003623DE /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
@@ -126,10 +140,10 @@
 				28C28F7924A73DEC00101288 /* TimerView.swift */,
 				282D09CF24A76DED00056B39 /* StartView.swift */,
 				282D09D124A76E9B00056B39 /* HistoryView.swift */,
-				28C40AB524A79689003623DE /* SampleView.swift */,
 				28C40AB724A798D2003623DE /* SettingsView.swift */,
 				28C40ABB24A7ACE2003623DE /* ResultView.swift */,
 				283FBC2624A8917900FCD6D6 /* CountdownView.swift */,
+				281A0DC825235A8400C5B685 /* ProgressBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -149,6 +163,8 @@
 				28C40AB924A7A36D003623DE /* SettingsViewModel.swift */,
 				28F7F1FB25161CF900676AEC /* TimerViewModel.swift */,
 				28A9094325224710001F856E /* ResultViewModel.swift */,
+				281A0DD0252363E200C5B685 /* CountdownViewModel.swift */,
+				281A0DD5252369AE00C5B685 /* StartViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -263,6 +279,7 @@
 				28FE7CA924A73825001D54A2 /* Sources */,
 				28FE7CAA24A73825001D54A2 /* Frameworks */,
 				28FE7CAB24A73825001D54A2 /* Resources */,
+				28069F5325233862006ADC18 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -279,7 +296,7 @@
 		28FE7C9724A73824001D54A2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					28FE7C9C24A73824001D54A2 = {
@@ -349,8 +366,9 @@
 				28A9094425224710001F856E /* ResultViewModel.swift in Sources */,
 				28C40AB424A791AC003623DE /* Date.swift in Sources */,
 				28C40AB124A78A45003623DE /* HistoryViewModel.swift in Sources */,
+				281A0DD1252363E200C5B685 /* CountdownViewModel.swift in Sources */,
+				281A0DC925235A8400C5B685 /* ProgressBar.swift in Sources */,
 				282D09D224A76E9B00056B39 /* HistoryView.swift in Sources */,
-				28C40AB624A79689003623DE /* SampleView.swift in Sources */,
 				28C40ABC24A7ACE2003623DE /* ResultView.swift in Sources */,
 				28FE7CB724A73825001D54A2 /* NotificationController.swift in Sources */,
 				282D09D024A76DED00056B39 /* StartView.swift in Sources */,
@@ -358,6 +376,7 @@
 				28C40ABA24A7A36D003623DE /* SettingsViewModel.swift in Sources */,
 				283FBC2724A8917900FCD6D6 /* CountdownView.swift in Sources */,
 				28FE7CBB24A73825001D54A2 /* ComplicationController.swift in Sources */,
+				281A0DD6252369AE00C5B685 /* StartViewModel.swift in Sources */,
 				28F7F1FC25161CF900676AEC /* TimerViewModel.swift in Sources */,
 				28C40AB824A798D2003623DE /* SettingsView.swift in Sources */,
 				28FE7CB324A73825001D54A2 /* BrushApp.swift in Sources */,

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ResultView: View {
     
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var resultVM: ResultViewModel
     
     init(seconds: Int) {
@@ -36,8 +37,6 @@ struct ResultView: View {
                         }
                     }
                     
-                    Divider()
-                    
                     VStack {
                         Text("Your goal is \(resultVM.goalTime) seconds")
                             .font(.footnote)
@@ -45,7 +44,9 @@ struct ResultView: View {
                     }
                     
                     HStack {
-                        NavigationLink(destination: TimerView(seconds: resultVM.seconds)) {
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
                             Text("Back")
                         }.cornerRadius(10)
                         
@@ -58,9 +59,7 @@ struct ResultView: View {
 
                 }
             }
-            .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)
-        }
+        }.navigationBarHidden(true)
     }
 }
 

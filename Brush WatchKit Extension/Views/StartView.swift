@@ -8,22 +8,35 @@
 import SwiftUI
 
 struct StartView: View {
+    
+    var startVM = StartViewModel()
+    
     var body: some View {
-        NavigationLink(destination: TimerView()) {
-            ZStack {
-                Circle()
-                    .overlay(
-                        Circle()
-                            .stroke(Color.accentColor, lineWidth: 5)
-                    )
-                    .foregroundColor(Color.gray.opacity(0.2))
-                    .frame(width: 120, height: 120, alignment: .center)
-                Text("Start").foregroundColor(.accentColor)
-                    .font(.title2)
-                    .bold()
+        NavigationView {
+            NavigationLink(destination: {
+                VStack {
+                    if startVM.showCountdown {
+                        CountdownView()
+                    } else {
+                        TimerView()
+                    }
+                }
+            }()) {
+                ZStack {
+                    Circle()
+                        .overlay(
+                            Circle()
+                                .stroke(Color.accentColor, lineWidth: 5)
+                        )
+                        .foregroundColor(Color.gray.opacity(0.2))
+                        .frame(width: 120, height: 120, alignment: .center)
+                    Text("Start").foregroundColor(.accentColor)
+                        .font(.title2)
+                        .bold()
+                }
             }
+            .buttonStyle(PlainButtonStyle())
         }
-        .buttonStyle(PlainButtonStyle())
     }
 }
 

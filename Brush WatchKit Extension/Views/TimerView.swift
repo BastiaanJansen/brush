@@ -17,15 +17,17 @@ struct TimerView: View {
     }
     
     var body: some View {
-        ZStack {
-            ProgressBar(progress: $timerVM.progress, color: $timerVM.color)
-                .frame(width: 140, height: 140)
-                .padding(20)
-            
-            Text(String(timerVM.seconds))
-                .font(.largeTitle)
-                .bold()
-                .foregroundColor(.accentColor)
+        GeometryReader { g in
+            ZStack {
+                ProgressBar(progress: $timerVM.progress, color: timerVM.progress < 1.0 ? .constant(Color.accentColor) : .constant(Color.green))
+                    .frame(width: g.size.width - 20, height: g.size.height - 20)
+                    .padding(20)
+                
+                Text(String(timerVM.seconds))
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundColor(.accentColor)
+            }.position(x: g.size.width / 2, y: g.size.height / 2)
         }.onTapGesture {
             timerVM.stopSession()
         }.sheet(isPresented: $timerVM.showResultView) {
@@ -33,29 +35,6 @@ struct TimerView: View {
         }
         .onAppear {
             timerVM.startSession()
-        }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
-    }
-}
-
-struct ProgressBar: View {
-    @Binding var progress: Float
-    @Binding var color: Color
-    
-    var body: some View {
-        ZStack {
-            Circle()
-                .stroke(lineWidth: 13.0)
-                .foregroundColor(color)
-                .opacity(0.3)
-            
-            Circle()
-                .trim(from: 0.0, to: CGFloat(min(max(progress, 0.005), 1.0)))
-                .stroke(style: StrokeStyle(lineWidth: 17, lineCap: .round, lineJoin: .round))
-                .foregroundColor(color)
-                .rotationEffect(Angle(degrees: 270.0))
-                .animation(.linear)
         }
     }
 }

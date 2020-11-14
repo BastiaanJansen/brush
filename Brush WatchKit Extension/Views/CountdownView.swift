@@ -8,27 +8,29 @@
 import SwiftUI
 
 struct CountdownView: View {
-    @State var maxSeconds: Int = 3
-    @State var currentSeconds: Int = 3
-    @State var progress: Float = 1.0
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    @ObservedObject var countdownVM = CountdownViewModel()
     
     var body: some View {
-        ZStack {
-            ProgressBar(progress: $progress, color: .constant(Color.blue))
-                .frame(width: 140, height: 140)
-            Text("\(currentSeconds)")
-                .font(.title)
-                .bold()
-                .onReceive(timer) { _ in
-                    if currentSeconds > 0 {
-                        currentSeconds -= 1
-                        progress = Float(currentSeconds) / Float(maxSeconds)
-                    }
-                }
+        NavigationLink(destination: TimerView(), tag: .timerView, selection: $countdownVM.actionState) {
+            GeometryReader { g in
+                ZStack {
+                    ProgressBar(progress: $countdownVM.progress, color: .constant(Color.accentColor))
+                        .frame(width: g.size.width - 20, height: g.size.height - 20)
+                    Text("\(countdownVM.currentSeconds)")
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.accentColor)
+                }.position(x: g.size.width / 2, y: g.size.height / 2)
+            }
+        }.buttonStyle(PlainButtonStyle())
+        .onAppear() {
+            countdownVM.startTimer()
+        }.onDisappear() {
+            countdownVM.stopTimer()
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarHidden(true)
     }
 }
 

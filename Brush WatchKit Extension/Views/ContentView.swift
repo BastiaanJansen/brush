@@ -13,22 +13,27 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $defaultTab) {
-            SettingsView()
-                .tabItem {
-                    Text("Settings")
-                }.tag(1)
-            StartView()
-                .tabItem() {
-                    Text("Start")
-                }.tag(2)
-            HistoryView()
-                .tabItem {
-                    Text("History")
-                }.tag(3)
+            NavigationView {
+                SettingsView().navigationTitle("Brush")
+            }
+            .tabItem {
+                Text("Settings")
+            }.tag(1)
+
+            NavigationView {
+                StartView().navigationBarTitle("Brush")
+            }
+            .tabItem() {
+                Text("Start")
+            }.tag(2)
+
+            NavigationView {
+                HistoryView().navigationTitle("History")
+            }
+            .tabItem {
+                Text("History")
+            }.tag(3)
         }
-        .font(.headline)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
     }
 }
 

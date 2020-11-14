@@ -15,7 +15,8 @@ struct BrushApp: App {
         askHealthkitPermission()
         
         UserDefaults.standard.register(defaults: [
-            "goalTime": 120
+            "goalTime": 120,
+            "countdown": true
         ])
     }
     

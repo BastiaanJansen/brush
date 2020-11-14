@@ -14,32 +14,44 @@ struct HistoryView: View {
     let goalTime = UserDefaults.standard.integer(forKey: "goalTime")
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 10) {
-                Text("Average session".uppercased())
-                    .font(.system(size: 13))
-                    .bold()
-                Text("\(historyVM.averageSeconds)")
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(historyVM.averageSeconds >= goalTime ? .green : .red)
-                Text("Seconds")
-                    .font(.system(size: 12))
-                    .foregroundColor(.gray)
-            }
-            
-            Spacer(minLength: 20)
-            Divider()
-            Spacer(minLength: 20)
-            
-            LazyVStack(spacing: 10) {
-                ForEach(historyVM.data, id: \.self) { sample in
-                    NavigationLink(destination: SampleView(sample: sample)) {
-                        ItemView(sample: sample)
-                    }
+//        ScrollView {
+//            VStack(spacing: 10) {
+//                Text("Average session".uppercased())
+//                    .font(.system(size: 13))
+//                    .bold()
+//                Text("\(historyVM.averageSeconds)")
+//                    .font(.largeTitle)
+//                    .bold()
+//                    .foregroundColor(historyVM.averageSeconds >= goalTime ? .green : .red)
+//                Text("Seconds")
+//                    .font(.system(size: 12))
+//                    .foregroundColor(.gray)
+//            }
+//
+//            Spacer(minLength: 20)
+//            Divider()
+//            Spacer(minLength: 20)
+//
+//            LazyVStack(spacing: 10) {
+//                ForEach(historyVM.data, id: \.self) { sample in
+//                    NavigationLink(destination: SampleView(sample: sample)) {
+//                        ItemView(sample: sample)
+//                    }
+//                }
+//            }
+//        }
+        
+        List {
+            ForEach(historyVM.data, id: \.self) { sample in
+                ItemView(sample: sample)
+            }.onDelete(perform: { indexSet in
+                for index in indexSet {
+                    historyVM.deleteSample(sample: historyVM.data[index])
                 }
-            }
-        }
+                
+                WKInterfaceDevice.current().play(.success)
+            })
+        }.listStyle(CarouselListStyle())
     }
 }
 

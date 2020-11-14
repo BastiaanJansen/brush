@@ -13,6 +13,11 @@ class SettingsViewModel: ObservableObject {
             UserDefaults.standard.set(goalTime, forKey: "goalTime")
         }
     }
+    @Published var countdown: Bool {
+        didSet {
+            UserDefaults.standard.set(countdown, forKey: "countdown")
+        }
+    }
     
     @Published var goalTimeStep = 10
     
@@ -21,6 +26,7 @@ class SettingsViewModel: ObservableObject {
     
     init() {        
         self.goalTime = UserDefaults.standard.integer(forKey: "goalTime")
+        self.countdown = UserDefaults.standard.bool(forKey: "countdown")
     }
     
     func changeGoalTime(step: Int) {
